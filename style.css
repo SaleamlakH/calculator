@@ -51,6 +51,28 @@ input:focus {
     outline: none;
 }
 
+.clear-buttons {
+    display: flex;
+    gap: 8px;
+}
+
+.clear-buttons button {
+    flex: 1; 
+    font-size: 1rem;
+    color: white;
+    padding: 0.4em;
+    border: none;
+    border-radius: 10px;
+}
+
+.clear {
+    background-color: hsl(0 100 35);
+}
+
+.backspace {
+    background-color: hsl(0 2 10)
+}
+
 .num-and-operators {
     display: flex;
     align-items: flex-start;
