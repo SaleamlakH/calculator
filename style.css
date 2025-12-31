@@ -58,7 +58,12 @@ input:focus {
 
 .clear-buttons button {
     flex: 1; 
-    font-size: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 1.3rem;
+    font-weight: 600;
     color: white;
     padding: 0.4em;
     border: none;
@@ -70,7 +75,11 @@ input:focus {
 }
 
 .backspace {
-    background-color: hsl(0 2 10)
+    background-color: hsl(0 2 10);
+}
+
+.backspace img {
+    width: 1.3rem;
 }
 
 .num-and-operators {
