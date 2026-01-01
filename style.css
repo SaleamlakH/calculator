@@ -57,7 +57,7 @@ input:focus {
 
 .clear-buttons {
     display: flex;
-    gap: 8px;
+    gap: var(--gap);
 }
 
 .clear-buttons button {
@@ -89,19 +89,19 @@ input:focus {
 .num-and-operators {
     display: flex;
     align-items: flex-start;
-    gap: 8px;
+    gap: var(--gap);
 }
 
 .numbers {
     display: flex;
     flex-wrap: wrap;
-    gap: 8px;
+    gap: var(--gap);
 }
 
 .operators {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: var(--gap);
 }
 
 .num-and-operators button {
