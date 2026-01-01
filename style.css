@@ -23,6 +23,7 @@ body {
 }
 
 .container {
+    flex-shrink: 0;
     border-radius: 10px;
     overflow: hidden;
     width: var(--calculator-width);
