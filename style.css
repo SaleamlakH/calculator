@@ -77,7 +77,9 @@ input:focus {
 }
 
 .clear {
-    background-color: hsl(0 100 35);
+    --lightness: 25;
+
+    background-color: hsl(0 100 var(--lightness));
 }
 
 .backspace {
@@ -128,9 +130,20 @@ input:focus {
 }
 
 button.equal-sign {
+    --lightness: 25;
+
     color: #f9f9f9;
     font-weight: 600;
-    background-color: hsl(120 100 25);
+    background-color: hsl(120 100 var(--lightness));
+}
+
+button:hover {
+    --bgcolor-buttons: hsl(0 2 20);
+    --lightness: 35;
+}
+
+button:active {
+    border: 1px solid hsl(0 2 50);
 }
 
 .footer {
