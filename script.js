@@ -16,8 +16,14 @@ function assignNumber(event) {
 
 function assignLeftOperand(targetNumber) {
     if (targetNumber == '.' && leftOperand.includes('.')) return;
-    if (leftOperand) leftOperand += targetNumber;
-    else leftOperand = targetNumber;
+    
+    if (leftOperand) {
+        leftOperand += targetNumber;
+    } else if (targetNumber == '.') {
+        leftOperand = '0.';
+    } else {
+        leftOperand = targetNumber;
+    }
     
     displayOperand(leftOperand);
 }
