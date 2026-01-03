@@ -10,13 +10,19 @@ function assignNumber(event) {
 
     const targetNumber = target.textContent;
     assignLeftOperand(targetNumber);
-    console.log(leftOperand);
 }
 
 function assignLeftOperand(targetNumber) {
     if (targetNumber == '.' && leftOperand.includes('.')) return;
     if (leftOperand) leftOperand += targetNumber;
     else leftOperand = targetNumber;
+    
+    displayOperand(leftOperand);
+}
+
+function displayOperand(operand) {
+    const display = document.querySelector('input');
+    display.value = operand;
 }
 
 function add(leftOperand, rightOperand) {
