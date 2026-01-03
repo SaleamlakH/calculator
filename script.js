@@ -14,6 +14,7 @@ function assignNumber(event) {
 }
 
 function assignLeftOperand(targetNumber) {
+    if (targetNumber == '.' && leftOperand.includes('.')) return;
     if (leftOperand) leftOperand += targetNumber;
     else leftOperand = targetNumber;
 }
