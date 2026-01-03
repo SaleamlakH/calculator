@@ -1,4 +1,6 @@
-let leftOperand, rightOperand, operator;
+let leftOperand = '';
+let rightOperand = '';
+let operator;
 const numbers = document.querySelector('.numbers');
 
 numbers.addEventListener('click', assignNumber);
