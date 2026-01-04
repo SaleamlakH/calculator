@@ -2,8 +2,10 @@ let leftOperand = '';
 let rightOperand = '';
 let operator;
 const numbers = document.querySelector('.numbers');
+const operators = document.querySelector('.operators');
 
 numbers.addEventListener('click', assignNumber);
+operators.addEventListener('click', setOperator);
 
 function assignNumber(event) {
     const target = event.target;
@@ -12,6 +14,30 @@ function assignNumber(event) {
 
     const targetNumber = target.textContent;
     assignLeftOperand(targetNumber);
+}
+
+function setOperator(event) {
+    const target = event.target;
+    if (target.className == 'operators') return;
+
+    let targetOperator = '';
+    if (target.children.length) targetOperator = target.className;
+    else targetOperator = target.parentNode.className;
+
+    switch (targetOperator) {
+        case 'addition':
+            operator = 'add';
+            break;
+        case 'subtraction':
+            operator = 'subtract';
+            break;
+        case 'multiplication':
+            operator = 'multiply'
+            break;
+        case 'division':
+            operator = 'divide';
+    }
+    console.log(operator);
 }
 
 function assignLeftOperand(targetNumber) {
