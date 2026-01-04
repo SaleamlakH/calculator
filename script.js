@@ -23,24 +23,9 @@ function setOperator(event) {
     if (target.className == 'operators') return;
     if (!operands.leftOperand) return;
 
-    let targetOperator = '';
-    if (target.children.length) targetOperator = target.className;
-    else targetOperator = target.parentNode.className;
-
-    switch (targetOperator) {
-        case 'addition':
-            operator = 'add';
-            break;
-        case 'subtraction':
-            operator = 'subtract';
-            break;
-        case 'multiplication':
-            operator = 'multiply'
-            break;
-        case 'division':
-            operator = 'divide';
-    }
-    console.log(operator);
+    operator = target.children.length
+        ? target.className
+        :target.parentNode.className;
 }
 
 function operate(leftOperand, rightOperand) {
