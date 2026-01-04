@@ -1,5 +1,7 @@
-let leftOperand = '';
-let rightOperand = '';
+const operands = {
+    leftOperand: '',
+    rightOperand: ''
+} 
 let operator;
 const numbers = document.querySelector('.numbers');
 const operators = document.querySelector('.operators');
@@ -13,13 +15,13 @@ function assignNumber(event) {
     if (target.textContent == '=') return;
 
     const targetNumber = target.textContent;
-    assignLeftOperand(targetNumber);
+    setOperand(targetNumber);
 }
 
 function setOperator(event) {
     const target = event.target;
     if (target.className == 'operators') return;
-    if (!leftOperand) return;
+    if (!operands.leftOperand) return;
 
     let targetOperator = '';
     if (target.children.length) targetOperator = target.className;
@@ -41,18 +43,19 @@ function setOperator(event) {
     console.log(operator);
 }
 
-function assignLeftOperand(targetNumber) {
-    if (targetNumber == '.' && leftOperand.includes('.')) return;
+function setOperand(number) {
+    let currentOperand = (operator) ? 'rightOperand' : 'leftOperand';
     
-    if (leftOperand) {
-        leftOperand += targetNumber;
-    } else if (targetNumber == '.') {
-        leftOperand = '0.';
+    if (number == '.' && operands[currentOperand].includes('.')) return;
+    if (operands[currentOperand]) {
+        operands[currentOperand] += number;
+    } else if (number == '.') {
+        operands[currentOperand] = '0.';
     } else {
-        leftOperand = targetNumber;
+        operands[currentOperand] = number;
     }
     
-    displayOperand(leftOperand);
+    displayOperand(operands[currentOperand]);
 }
 
 function displayOperand(operand) {
