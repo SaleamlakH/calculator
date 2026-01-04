@@ -43,6 +43,17 @@ function setOperator(event) {
     console.log(operator);
 }
 
+function operate(leftOperand, rightOperand) {
+    const operations = {
+        add: () => leftOperand + rightOperand,
+        subtract: () => leftOperand - rightOperand,
+        multiply: () => leftOperand * rightOperand,
+        divide: () => leftOperand / rightOperand
+    }
+
+    return operations[operator]();
+}
+
 function setOperand(number) {
     let currentOperand = (operator) ? 'rightOperand' : 'leftOperand';
     
@@ -61,20 +72,4 @@ function setOperand(number) {
 function displayOperand(operand) {
     const display = document.querySelector('input');
     display.value = operand;
-}
-
-function add(leftOperand, rightOperand) {
-    return leftOperand + rightOperand;
-}
-
-function subtract(leftOperand, rightOperand) {
-    return leftOperand - rightOperand;
-}
-
-function multiply(leftOperand, rightOperand) {
-    return leftOperand * rightOperand;
-}
-
-function divide(leftOperand, rightOperand) {
-    return leftOperand / rightOperand;
 }
