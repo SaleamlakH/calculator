@@ -19,6 +19,7 @@ function assignNumber(event) {
 function setOperator(event) {
     const target = event.target;
     if (target.className == 'operators') return;
+    if (!leftOperand) return;
 
     let targetOperator = '';
     if (target.children.length) targetOperator = target.className;
