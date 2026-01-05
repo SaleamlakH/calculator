@@ -25,6 +25,7 @@ function setOperator(event) {
     if (!operands.leftOperand) return;
     if (operands.rightOperand) {
         let result = operate();
+        updateCalculatorState(result);
         displayOperand(result);
     }
 
@@ -60,6 +61,11 @@ function setOperand(number) {
     }
     
     displayOperand(operands[currentOperand]);
+}
+
+function updateCalculatorState(result) {
+    operands.leftOperand = result;
+    operands.rightOperand = '';
 }
 
 function displayOperand(operand) {
