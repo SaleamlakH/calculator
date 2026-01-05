@@ -10,6 +10,8 @@ const equalSign = document.querySelector('.equal-sign');
 numbers.addEventListener('click', assignNumber);
 operators.addEventListener('click', setOperator);
 equalSign.addEventListener('click', () => {
+    if (!operands.rightOperand) return;
+    
     let result = operate();
     updateCalculatorState(result);
     displayOperand(result);
