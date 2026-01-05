@@ -5,9 +5,15 @@ const operands = {
 let operator;
 const numbers = document.querySelector('.numbers');
 const operators = document.querySelector('.operators');
+const equalSign = document.querySelector('.equal-sign');
 
 numbers.addEventListener('click', assignNumber);
 operators.addEventListener('click', setOperator);
+equalSign.addEventListener('click', () => {
+    let result = operate();
+    updateCalculatorState(result);
+    displayOperand(result);
+})
 
 function assignNumber(event) {
     const target = event.target;
