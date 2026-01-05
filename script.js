@@ -23,6 +23,10 @@ function setOperator(event) {
     
     if (target.className == 'operators') return;
     if (!operands.leftOperand) return;
+    if (operands.rightOperand) {
+        let result = operate();
+        displayOperand(result);
+    }
 
     operator = target.children.length
         ? target.className
