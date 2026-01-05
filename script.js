@@ -20,6 +20,7 @@ function assignNumber(event) {
 
 function setOperator(event) {
     const target = event.target;
+    
     if (target.className == 'operators') return;
     if (!operands.leftOperand) return;
 
@@ -28,7 +29,10 @@ function setOperator(event) {
         :target.parentNode.className;
 }
 
-function operate(leftOperand, rightOperand) {
+function operate() {
+    const leftOperand = parseFloat(operands.leftOperand);
+    const rightOperand = parseFloat(operands.rightOperand);
+
     const operations = {
         add: () => leftOperand + rightOperand,
         subtract: () => leftOperand - rightOperand,
