@@ -2,7 +2,8 @@ const operands = {
     leftOperand: '',
     rightOperand: ''
 } 
-let operator;
+let operator = null;
+let operatedByEqualSign = false;
 const numbers = document.querySelector('.numbers');
 const operators = document.querySelector('.operators');
 const equalSign = document.querySelector('.equal-sign');
@@ -13,7 +14,7 @@ equalSign.addEventListener('click', () => {
     if (!operands.rightOperand) return;
     
     let result = operate();
-    updateCalculatorState(result);
+    updateCalculatorState(result, true);
     displayOperand(result);
 })
 
@@ -31,6 +32,7 @@ function setOperator(event) {
     
     if (target.className == 'operators') return;
     if (!operands.leftOperand) return;
+    if (operatedByEqualSign) operatedByEqualSign = false;
     if (operands.rightOperand) {
         let result = operate();
         updateCalculatorState(result);
@@ -57,8 +59,12 @@ function operate() {
 }
 
 function setOperand(number) {
-    let currentOperand = (operator) ? 'rightOperand' : 'leftOperand';
+    let currentOperand = (operator && !operatedByEqualSign) ? 'rightOperand' : 'leftOperand';
     
+    if (operatedByEqualSign) {
+        operands.leftOperand = '';
+        operatedByEqualSign = false;
+    }
     if (number == '.' && operands[currentOperand].includes('.')) return;
     if (operands[currentOperand]) {
         operands[currentOperand] += number;
@@ -71,9 +77,15 @@ function setOperand(number) {
     displayOperand(operands[currentOperand]);
 }
 
-function updateCalculatorState(result) {
+function updateCalculatorState(result, isEqualSign = false) {
     operands.leftOperand = result;
     operands.rightOperand = '';
+    if (isEqualSign) {
+        operatedByEqualSign = true;
+        operator = null;
+    } else {
+        operatedByEqualSign = false;
+    }
 }
 
 function displayOperand(operand) {
