@@ -8,10 +8,12 @@ const numbers = document.querySelector('.numbers');
 const operators = document.querySelector('.operators');
 const equalSign = document.querySelector('.equal-sign');
 const clearBtn = document.querySelector('.clear');
+const deleteBtn = document.querySelector('.backspace');
 
 numbers.addEventListener('click', assignNumber);
 operators.addEventListener('click', setOperator);
 clearBtn.addEventListener('click', resetCalc);
+deleteBtn.addEventListener('click', deleteNumber);
 equalSign.addEventListener('click', () => {
     if (!operands.rightOperand) return;
     
@@ -94,6 +96,14 @@ function updateCalculatorState(result, isEqualSign = false) {
     } else {
         operatedByEqualSign = false;
     }
+}
+
+function deleteNumber() {
+    const currentOperand = getCurrentOperand();
+
+    updatedOperand = operands[currentOperand].slice(0, -1);
+    operands[currentOperand] = updatedOperand;
+    displayOperand(updatedOperand);
 }
 
 function resetCalc() {
