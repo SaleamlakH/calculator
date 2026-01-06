@@ -66,6 +66,7 @@ function setOperand(number) {
     let currentOperand = getCurrentOperand();
 
     if (number == '.' && operands[currentOperand].includes('.')) return;
+    if (operands[currentOperand] == '0') operands[currentOperand] = '';
     if (operands[currentOperand]) {
         operands[currentOperand] += number;
     } else if (number == '.') {
