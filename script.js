@@ -59,12 +59,8 @@ function operate() {
 }
 
 function setOperand(number) {
-    let currentOperand = (operator && !operatedByEqualSign) ? 'rightOperand' : 'leftOperand';
-    
-    if (operatedByEqualSign) {
-        operands.leftOperand = '';
-        operatedByEqualSign = false;
-    }
+    let currentOperand = getCurrentOperand();
+
     if (number == '.' && operands[currentOperand].includes('.')) return;
     if (operands[currentOperand]) {
         operands[currentOperand] += number;
@@ -75,6 +71,16 @@ function setOperand(number) {
     }
     
     displayOperand(operands[currentOperand]);
+}
+
+function getCurrentOperand() {
+    if (operatedByEqualSign) {
+        operands.leftOperand = '';
+        operatedByEqualSign = false;
+        return 'leftOperand';
+    }
+
+    return operator ? 'rightOperand' : 'leftOperand';
 }
 
 function updateCalculatorState(result, isEqualSign = false) {
