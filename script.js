@@ -7,16 +7,18 @@ let operatedByEqualSign = false;
 const numbers = document.querySelector('.numbers');
 const operators = document.querySelector('.operators');
 const equalSign = document.querySelector('.equal-sign');
+const clearBtn = document.querySelector('.clear');
 
 numbers.addEventListener('click', assignNumber);
 operators.addEventListener('click', setOperator);
+clearBtn.addEventListener('click', resetCalc);
 equalSign.addEventListener('click', () => {
     if (!operands.rightOperand) return;
     
     let result = operate();
     updateCalculatorState(result, true);
     displayOperand(result);
-})
+});
 
 function assignNumber(event) {
     const target = event.target;
@@ -92,6 +94,13 @@ function updateCalculatorState(result, isEqualSign = false) {
     } else {
         operatedByEqualSign = false;
     }
+}
+
+function resetCalc() {
+    operands.leftOperand = '';
+    operands.rightOperand = '';
+    operator = null;
+    displayOperand('');
 }
 
 function displayOperand(operand) {
