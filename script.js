@@ -119,6 +119,5 @@ function resetCalc() {
 }
 
 function displayOperand(operand) {
-    const display = document.querySelector('input');
-    display.value = operand;
+    input.value = operand;
 }
