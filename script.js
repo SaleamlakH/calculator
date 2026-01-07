@@ -16,13 +16,7 @@ numbers.addEventListener('click', assignNumber);
 operators.addEventListener('click', setOperator);
 clearBtn.addEventListener('click', resetCalc);
 deleteBtn.addEventListener('click', deleteNumber);
-equalSign.addEventListener('click', () => {
-    if (!operands.rightOperand) return;
-    
-    let result = operate();
-    updateCalculatorState(result, true);
-    displayOperand(result);
-});
+equalSign.addEventListener('click', calculate);
 
 function assignNumber(event) {
     const target = event.target;
@@ -40,11 +34,7 @@ function setOperator(event) {
     if (target.className == 'operators') return;
     if (!operands.leftOperand) return;
     if (operatedByEqualSign) operatedByEqualSign = false;
-    if (operands.rightOperand) {
-        let result = operate();
-        updateCalculatorState(result);
-        displayOperand(result);
-    }
+    if (operands.rightOperand) calculate();
 
     operator = target.children.length
         ? target.className
@@ -63,6 +53,17 @@ function operate() {
     }
 
     return operations[operator]();
+}
+
+//equal-sign passes an event, operators don't
+function calculate(event = false) {
+    let result = operate();
+    if (event && operands.rightOperand) {
+        updateCalculatorState(result, true);
+    } else {
+        updateCalculatorState(result);
+    }
+    displayOperand(result);
 }
 
 function setOperand(number) {
