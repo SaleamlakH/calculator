@@ -26,6 +26,7 @@ function assignNumber(event) {
     const targetNumber = target.textContent;
     let operand = setOperand(targetNumber);
     displayOperand(operand);
+    updateSecondaryDisplay();
 }
 
 function setOperator(event) {
@@ -39,6 +40,7 @@ function setOperator(event) {
     operator = target.children.length
         ? target.className
         :target.parentNode.className;
+    updateSecondaryDisplay();
 }
 
 function operate() {
@@ -58,7 +60,9 @@ function operate() {
 //equal-sign passes an event, operators don't
 function calculate(event = false) {
     let result = operate();
+    
     if (event && operands.rightOperand) {
+        updateSecondaryDisplay(true);
         updateCalculatorState(result, true);
     } else {
         updateCalculatorState(result);
@@ -109,6 +113,7 @@ function deleteNumber() {
     updatedOperand = operands[currentOperand].slice(0, -1);
     operands[currentOperand] = updatedOperand;
     displayOperand(updatedOperand);
+    updateSecondaryDisplay();
 }
 
 function resetCalc() {
@@ -116,8 +121,19 @@ function resetCalc() {
     operands.rightOperand = '';
     operator = null;
     displayOperand('');
+    updateSecondaryDisplay();
 }
 
 function displayOperand(operand) {
     input.value = operand;
+}
+
+function updateSecondaryDisplay(operated = false) {
+    const secondaryDisplay = document.querySelector('.current-operation');
+    const operators = {add: '+', subtract: '-', multiply: 'x', divide: '/'};
+    let currentOperator = operators[operator] || '';
+
+    secondaryDisplay.textContent = (operated)
+        ? `${operands.leftOperand} ${currentOperator} ${operands.rightOperand} =`
+        : `${operands.leftOperand} ${currentOperator}`
 }
