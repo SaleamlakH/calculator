@@ -39,8 +39,7 @@ body {
 .operation-display {
     color: hsl(0 0 98);
     border-radius: 10px;
-    padding: 10px;
-    height: 100px;
+    padding: 1em 0.5em;
     background-color: var(--bgcolor-buttons);
 }
 
