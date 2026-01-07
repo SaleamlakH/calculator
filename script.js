@@ -62,7 +62,7 @@ function calculate(event = false) {
     if (event && !operands.rightOperand) return;
     
     let result = operate();
-     
+
     if (event && operands.rightOperand) {
         updateSecondaryDisplay(true);
         updateCalculatorState(result, true);
@@ -75,7 +75,9 @@ function calculate(event = false) {
 function setOperand(number) {
     let currentOperand = getCurrentOperand();
 
-    if (number == '.' && operands[currentOperand].includes('.')) return;
+    if (number == '.' && operands[currentOperand].includes('.')) {
+        return operands[currentOperand];
+    };
     if (operands[currentOperand] == '0') operands[currentOperand] = '';
     if (operands[currentOperand]) {
         operands[currentOperand] += number;
