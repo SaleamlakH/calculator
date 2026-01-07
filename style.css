@@ -57,6 +57,14 @@ input:focus {
     outline: none;
 }
 
+.operation-display .current-operation {
+    color: hsl(0 0 80);
+    font-size: 0.75rem;
+    height: 1rem;
+    margin-bottom: 0.5em;
+    text-align: right;
+}
+
 .clear-buttons {
     display: flex;
     gap: var(--gap);
