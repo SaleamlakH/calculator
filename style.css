@@ -47,7 +47,7 @@ input {
     color: hsl(0 0 98);
     text-align: right;
     background-color: transparent;
-    font-size: 24px;
+    font-size: var(--font-size);
     border: none;
     width: 100%;
 }
@@ -58,7 +58,7 @@ input:focus {
 
 .operation-display .current-operation {
     color: hsl(0 0 80);
-    font-size: 0.75rem;
+    font-size: 0.95rem;
     height: 1rem;
     margin-bottom: 0.5em;
     text-align: right;
