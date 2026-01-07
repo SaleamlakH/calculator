@@ -59,8 +59,10 @@ function operate() {
 
 //equal-sign passes an event, operators don't
 function calculate(event = false) {
-    let result = operate();
+    if (event && !operands.rightOperand) return;
     
+    let result = operate();
+     
     if (event && operands.rightOperand) {
         updateSecondaryDisplay(true);
         updateCalculatorState(result, true);
