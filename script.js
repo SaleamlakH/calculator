@@ -1,15 +1,15 @@
-const operands = {
-    leftOperand: '',
-    rightOperand: ''
-} 
-let operator = null;
-let operatedByEqualSign = false;
 const numbers = document.querySelector('.numbers');
 const operators = document.querySelector('.operators');
 const equalSign = document.querySelector('.equal-sign');
 const clearBtn = document.querySelector('.clear');
 const deleteBtn = document.querySelector('.backspace');
 const input = document.querySelector('input');
+let operatedByEqualSign = false;
+let operator = null;
+const operands = {
+    leftOperand: '',
+    rightOperand: ''
+}
 
 input.addEventListener('blur', () => input.focus());
 numbers.addEventListener('click', assignNumber);
