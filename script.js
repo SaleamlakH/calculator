@@ -30,7 +30,8 @@ function assignNumber(event) {
     if (target.textContent == '=') return;
 
     const targetNumber = target.textContent;
-    setOperand(targetNumber);
+    let operand = setOperand(targetNumber);
+    displayOperand(operand);
 }
 
 function setOperator(event) {
@@ -77,7 +78,7 @@ function setOperand(number) {
         operands[currentOperand] = number;
     }
     
-    displayOperand(operands[currentOperand]);
+    return operands[currentOperand];
 }
 
 function getCurrentOperand() {
