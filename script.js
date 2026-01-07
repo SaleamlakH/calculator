@@ -9,7 +9,9 @@ const operators = document.querySelector('.operators');
 const equalSign = document.querySelector('.equal-sign');
 const clearBtn = document.querySelector('.clear');
 const deleteBtn = document.querySelector('.backspace');
+const input = document.querySelector('input');
 
+input.addEventListener('blur', () => input.focus());
 numbers.addEventListener('click', assignNumber);
 operators.addEventListener('click', setOperator);
 clearBtn.addEventListener('click', resetCalc);
