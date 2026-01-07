@@ -2,6 +2,7 @@
 *::before,
 *::after {
     box-sizing: border-box;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 :root {
@@ -47,7 +48,7 @@ input {
     color: hsl(0 0 98);
     text-align: right;
     background-color: transparent;
-    font-size: var(--font-size);
+    font-size: 2em;
     border: none;
     width: 100%;
 }
