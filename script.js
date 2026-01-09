@@ -12,11 +12,27 @@ const operands = {
 }
 
 input.addEventListener('blur', () => input.focus());
+input.addEventListener('keydown', handleKeydown);
 numbers.addEventListener('click', assignNumber);
 operators.addEventListener('click', setOperator);
 clearBtn.addEventListener('click', resetCalc);
 deleteBtn.addEventListener('click', deleteNumber);
 equalSign.addEventListener('click', calculate);
+
+function handleKeydown(event) {
+    const pressedKey = event.key.toLowerCase();
+
+    //The key is only displayed by `displayOperand` function
+    event.preventDefault();
+
+    if (Number(pressedKey) || pressedKey == '0') {
+        let currentOperand = setOperand(pressedKey);
+        displayOperand(currentOperand);
+        updateSecondaryDisplay();
+    } else if (pressedKey == 'backspace') {
+        deleteNumber();
+    }
+}
 
 function assignNumber(event) {
     const target = event.target;
