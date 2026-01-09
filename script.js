@@ -19,39 +19,6 @@ clearBtn.addEventListener('click', resetCalc);
 deleteBtn.addEventListener('click', deleteNumber);
 equalSign.addEventListener('click', calculate);
 
-function handleKeydown(event) {
-    const pressedKey = event.key.toLowerCase();
-    const operatorKeys = {'+': 'add',
-        '-': 'subtract', 
-        '*': 'multiply', 
-        '/': 'divide',
-    }
-
-    //The key is only displayed by `displayOperand` function
-    event.preventDefault();
-
-    if (Number(pressedKey) || pressedKey == '0') {
-        let currentOperand = setOperand(pressedKey);
-        displayOperand(currentOperand);
-        updateSecondaryDisplay();
-    } else if (pressedKey == 'backspace') {
-        deleteNumber();
-        return;
-    }
-    
-    let tempOperator = operatorKeys[pressedKey];
-    if (tempOperator) {
-        if (operatedByEqualSign) operatedByEqualSign = false;
-        if (operands.rightOperand) calculate();
-        operator = tempOperator;
-        updateSecondaryDisplay();
-    }
-
-    if (pressedKey == '=') {
-        calculate(true);
-    }
-}
-
 function assignNumber(event) {
     const target = event.target;
     if (target.className == 'numbers') return;
@@ -174,4 +141,37 @@ function updateSecondaryDisplay(operated = false) {
     secondaryDisplay.textContent = (operated)
         ? `${operands.leftOperand} ${currentOperator} ${operands.rightOperand} =`
         : `${operands.leftOperand} ${currentOperator}`
+}
+
+function handleKeydown(event) {
+    const pressedKey = event.key.toLowerCase();
+    const operatorKeys = {'+': 'add',
+        '-': 'subtract', 
+        '*': 'multiply', 
+        '/': 'divide',
+    }
+
+    //The key is only displayed by `displayOperand` function
+    event.preventDefault();
+
+    if (Number(pressedKey) || pressedKey == '0') {
+        let currentOperand = setOperand(pressedKey);
+        displayOperand(currentOperand);
+        updateSecondaryDisplay();
+    } else if (pressedKey == 'backspace') {
+        deleteNumber();
+        return;
+    }
+    
+    let tempOperator = operatorKeys[pressedKey];
+    if (tempOperator) {
+        if (operatedByEqualSign) operatedByEqualSign = false;
+        if (operands.rightOperand) calculate();
+        operator = tempOperator;
+        updateSecondaryDisplay();
+    }
+
+    if (pressedKey == '=') {
+        calculate(true);
+    }
 }
