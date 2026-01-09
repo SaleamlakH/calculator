@@ -165,6 +165,7 @@ function handleKeydown(event) {
     
     let tempOperator = operatorKeys[pressedKey];
     if (tempOperator) {
+        if (!operands.leftOperand) return;
         if (operatedByEqualSign) operatedByEqualSign = false;
         if (operands.rightOperand) calculate();
         operator = tempOperator;
