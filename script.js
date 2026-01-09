@@ -21,6 +21,11 @@ equalSign.addEventListener('click', calculate);
 
 function handleKeydown(event) {
     const pressedKey = event.key.toLowerCase();
+    const operatorKeys = {'+': 'add',
+        '-': 'subtract', 
+        '*': 'multiply', 
+        '/': 'divide',
+    }
 
     //The key is only displayed by `displayOperand` function
     event.preventDefault();
@@ -31,6 +36,14 @@ function handleKeydown(event) {
         updateSecondaryDisplay();
     } else if (pressedKey == 'backspace') {
         deleteNumber();
+        return;
+    }
+    
+    let tempOperator = operatorKeys[pressedKey];
+    if (tempOperator) {
+        if (operands.rightOperand) calculate();
+        operator = tempOperator;
+        updateSecondaryDisplay();
     }
 }
 
