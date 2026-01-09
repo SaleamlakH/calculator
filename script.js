@@ -41,9 +41,14 @@ function handleKeydown(event) {
     
     let tempOperator = operatorKeys[pressedKey];
     if (tempOperator) {
+        if (operatedByEqualSign) operatedByEqualSign = false;
         if (operands.rightOperand) calculate();
         operator = tempOperator;
         updateSecondaryDisplay();
+    }
+
+    if (pressedKey == '=') {
+        calculate(true);
     }
 }
 
