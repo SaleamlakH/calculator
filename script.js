@@ -174,7 +174,7 @@ function handleKeydown(event) {
     //The key is only displayed by `displayOperand` function
     event.preventDefault();
 
-    if (Number(pressedKey) || pressedKey == '0') {
+    if (Number(pressedKey) || pressedKey == '0' || pressedKey == '.') {
         let currentOperand = setOperand(pressedKey);
         displayOperand(currentOperand);
         updateSecondaryDisplay();
