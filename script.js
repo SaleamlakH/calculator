@@ -13,7 +13,7 @@ const operands = {
 }
 
 input.addEventListener('blur', () => input.focus());
-input.addEventListener('keydown', handleKeydown);
+document.addEventListener('keydown', handleKeydown);
 numbers.addEventListener('click', assignNumber);
 operators.addEventListener('click', setOperator);
 clearBtn.addEventListener('click', resetCalc);
@@ -171,6 +171,7 @@ function isZeroDivision() {
     return false;
 }
 
+// Keyboard support
 function handleKeydown(event) {
     const pressedKey = event.key.toLowerCase();
     const operatorKeys = {'+': 'add',
@@ -178,9 +179,6 @@ function handleKeydown(event) {
         '*': 'multiply', 
         '/': 'divide',
     }
-
-    //The key is only displayed by `displayOperand` function
-    event.preventDefault();
 
     if (Number(pressedKey) || pressedKey == '0' || pressedKey == '.') {
         let currentOperand = setOperand(pressedKey);
