@@ -65,7 +65,7 @@ function calculate(event = false) {
     if (event && !operands.rightOperand) return;
     if (event && isZeroDivision()) return;
     
-    let result = operate();
+    let result = roundResult(operate());
 
     if (event && operands.rightOperand) {
         updateSecondaryDisplay(true);
@@ -103,6 +103,14 @@ function getCurrentOperand() {
     }
 
     return operator ? 'rightOperand' : 'leftOperand';
+}
+
+function roundResult(result) {
+    let resultAsStr = String(result);
+    let numOfDecimalPlaces = resultAsStr.slice(resultAsStr.indexOf('.')).length;
+
+    if (numOfDecimalPlaces >= 5) return result.toFixed(5);
+    return result;
 }
 
 function updateCalculatorState(result, isEqualSign = false) {
