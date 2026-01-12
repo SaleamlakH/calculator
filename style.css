@@ -25,6 +25,18 @@ body {
     align-items: center;
 }
 
+dialog {
+    text-align: center;
+    color:hsl(0 0 100);
+    background-color: hsl(0 75 50);
+    width: var(--calculator-width);
+    border: none;
+    border-radius: 10px;
+    position: absolute;
+    top: 10px;
+    box-shadow: 1px 1px 5px 1px hsl(0 10 50);
+}
+
 .container {
     flex: 1 0 auto;
     border-radius: 10px;

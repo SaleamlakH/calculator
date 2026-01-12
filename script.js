@@ -1,3 +1,4 @@
+const dialog = document.querySelector('dialog');
 const numbers = document.querySelector('.numbers');
 const operators = document.querySelector('.operators');
 const equalSign = document.querySelector('.equal-sign');
@@ -36,6 +37,7 @@ function setOperator(event) {
     if (target.className == 'operators') return;
     if (!operands.leftOperand) return;
     if (operatedByEqualSign) operatedByEqualSign = false;
+    if (isZeroDivision()) return;
     if (operands.rightOperand) calculate();
 
     operator = target.children.length
@@ -61,6 +63,7 @@ function operate() {
 //equal-sign passes an event, operators don't
 function calculate(event = false) {
     if (event && !operands.rightOperand) return;
+    if (event && isZeroDivision()) return;
     
     let result = operate();
 
@@ -88,6 +91,7 @@ function setOperand(number) {
         operands[currentOperand] = number;
     }
     
+    toggleErrorDialog();
     return operands[currentOperand];
 }
 
@@ -127,6 +131,7 @@ function resetCalc() {
     operator = null;
     displayOperand('');
     updateSecondaryDisplay();
+    toggleErrorDialog();
 }
 
 function displayOperand(operand) {
@@ -141,6 +146,21 @@ function updateSecondaryDisplay(operated = false) {
     secondaryDisplay.textContent = (operated)
         ? `${operands.leftOperand} ${currentOperator} ${operands.rightOperand} =`
         : `${operands.leftOperand} ${currentOperator}`
+}
+
+function toggleErrorDialog() {
+    if (isZeroDivision()) {
+        dialog.show();
+    } else {
+        dialog.close();
+    }
+}
+
+function isZeroDivision() {
+    let rightOperand = parseFloat(operands.rightOperand);
+    
+    if (rightOperand === 0 && operator === 'divide') return true;
+    return false;
 }
 
 function handleKeydown(event) {
