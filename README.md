@@ -1,8 +1,6 @@
 # Calculator
 
-This project is part of the Foundation course part of [The Odin Project](https://www.theodinproject.com). even if making it more responsive is part of the project, i use `custom property`, `relative units`, and `css functions, calc()` to make it responsive and accessible based on `the screen size` and `the browser font-size`.
-
-The inspiration for this design is the samsung calculator design. 
+This project is part of the Foundation course part of [The Odin Project](https://www.theodinproject.com). Although making the app responsive was not required at this level, i try to make it responsive and accessible. i used `custom property`, `relative units`, and `css functions (like calc())` to ensure the layout adapts different screen sizes and respects the user's browser font-size settings.
 
 [**View in Demo**](https://saleamlakh.github.io/calculator/)
 
@@ -18,11 +16,13 @@ The inspiration for this design is the samsung calculator design.
     - `+`, `-`, `*`, `/` : Operators
     - `=`: Calculate result
 
-## Note of the project
-- **Transform elements**: transforming elements by translating or scaling reduces the clickable area.
+## Project Notes
+- **Transform elements**: translating or scaling reduces the clickable area.
 
 - **event.preventDefault()**: when you use this method make sure it doesn't affect the browser shortcuts. Try not to prevent the user from using browser shortcuts.
 
 
 ## Credits
 I get the icons from [Feathersicons.com](https://feathericons.com/)
+
+The design was inspired by the samsung calculator design. 
